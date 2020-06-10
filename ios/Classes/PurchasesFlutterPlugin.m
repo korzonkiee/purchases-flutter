@@ -69,6 +69,8 @@ NSString *RNPurchasesPurchaserInfoUpdatedEvent = @"Purchases-PurchaserInfoUpdate
         [self createAlias:arguments[@"newAppUserID"] result:result];
     } else if ([@"setDebugLogsEnabled" isEqualToString:call.method]) {
         [self setDebugLogsEnabled:[arguments[@"enabled"] boolValue] result:result];
+    } else if ([@"setProxyURLString" isEqualToString:call.method]) {
+        [self setProxyURLString:arguments[@"proxyURLString"] result:result];
     } else if ([@"getPurchaserInfo" isEqualToString:call.method]) {
         [self getPurchaserInfoWithResult:result];
     } else if ([@"syncPurchases" isEqualToString:call.method]) {
@@ -194,6 +196,13 @@ NSString *RNPurchasesPurchaserInfoUpdatedEvent = @"Purchases-PurchaserInfoUpdate
                      result:(FlutterResult)result
 {
     [RCCommonFunctionality setDebugLogsEnabled:enabled];
+    result(nil);
+}
+
+- (void)setProxyURLString:(nullable NSString *)proxyURLString
+                   result:(FlutterResult)result
+{
+    [RCCommonFunctionality setProxyURLString:proxyURLString];
     result(nil);
 }
 
